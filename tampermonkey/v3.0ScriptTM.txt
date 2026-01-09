@@ -1,0 +1,250 @@
+// ==UserScript==
+// @name         ClaudeCapture v3.0 FINAL
+// @namespace    http://tampermonkey.net/
+// @version      3.0
+// @description  Capture Claude conversations on submission only
+// @match        https://claude.ai/*
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @grant        GM_xmlhttpRequest
+// @connect      127.0.0.1
+// @connect      localhost
+// @run-at       document-end
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    const FLASK_URL = "http://127.0.0.1:5005";
+    const PING_INTERVAL = 15000;
+
+    if (window._claudeCaptureV3) {
+        console.log("[ClaudeCapture-v3] Already installed");
+        return;
+    }
+    window._claudeCaptureV3 = true;
+
+    let isEnabled = true;
+    let isConnected = false;
+    let lastSentUserMsg = "";
+    let lastSentAssistantMsg = "";
+    let previousTextareaContent = "";
+
+    try { isEnabled = GM_getValue("claudeCaptureEnabled", true); } catch(e) {}
+
+    function saveEnabled() {
+        try { GM_setValue("claudeCaptureEnabled", isEnabled); } catch(e) {}
+    }
+
+    // UI Button
+    function createUI() {
+        console.log("[ClaudeCapture-v3] Creating UI button...");
+
+        const old = document.getElementById("claude-capture-v3");
+        if (old) old.remove();
+
+        const btn = document.createElement("div");
+        btn.id = "claude-capture-v3";
+        btn.style.cssText = `
+            position: fixed !important;
+            bottom: 100px !important;
+            right: 20px !important;
+            z-index: 2147483647 !important;
+            background: #7C3AED !important;
+            color: white !important;
+            padding: 12px 18px !important;
+            border-radius: 12px !important;
+            font-family: monospace !important;
+            font-size: 13px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 12px rgba(124,58,237,0.4) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        `;
+
+        btn.innerHTML = `
+            <span id="claude-v3-dot" style="
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #888;
+            "></span>
+            <span id="claude-v3-text">Claude v3</span>
+        `;
+
+        document.body.appendChild(btn);
+        btn.addEventListener("click", () => {
+            isEnabled = !isEnabled;
+            saveEnabled();
+            console.log(`[ClaudeCapture-v3] ${isEnabled ? 'ENABLED' : 'DISABLED'}`);
+            updateUI();
+        });
+
+        updateUI();
+    }
+
+    function updateUI() {
+        const dot = document.getElementById("claude-v3-dot");
+        const text = document.getElementById("claude-v3-text");
+        if (!dot || !text) return;
+
+        if (!isEnabled) {
+            dot.style.background = "#666";
+            text.textContent = "Claude: OFF";
+        } else if (!isConnected) {
+            dot.style.background = "#EF4444";
+            text.textContent = "Claude: DISCONN";
+        } else {
+            dot.style.background = "#10B981";
+            text.textContent = "Claude: ON";
+        }
+    }
+
+    function xhr(method, url, data, callback) {
+        GM_xmlhttpRequest({
+            method: method,
+            url: url,
+            headers: data ? { "Content-Type": "application/json" } : {},
+            data: data ? JSON.stringify(data) : null,
+            onload: (res) => callback(true, res),
+            onerror: (err) => callback(false, err),
+            ontimeout: () => callback(false, "timeout")
+        });
+    }
+
+    function checkConnection() {
+        xhr("GET", `${FLASK_URL}/ping`, null, (ok) => {
+            if (isConnected !== ok) {
+                isConnected = ok;
+                console.log(`[ClaudeCapture-v3] Flask ${ok ? 'CONNECTED ✓' : 'DISCONNECTED ✗'}`);
+                updateUI();
+            }
+        });
+    }
+
+    function sendMessage(role, content) {
+        if (!isEnabled || !isConnected) return;
+        if (!content || content.length < 10) return;
+
+        console.log(`[ClaudeCapture-v3] 📤 Sending ${role} (${content.length} chars)`);
+
+        xhr("POST", `${FLASK_URL}/capture`, {
+            ts: new Date().toISOString(),
+            role: role,
+            content: content,
+            source: "claude"
+        }, (ok) => {
+            if (ok) {
+                console.log(`[ClaudeCapture-v3] ✓ ${role} sent`);
+            } else {
+                console.error(`[ClaudeCapture-v3] ✗ ${role} FAILED`);
+            }
+        });
+    }
+
+    // Get textarea content
+    function getTextareaContent() {
+        const textarea = document.querySelector('textarea');
+        if (!textarea) return "";
+        return (textarea.value || "").trim();
+    }
+
+    // Get assistant's last message
+    function getAssistantMessage() {
+        // Find all potential message containers
+        const candidates = [];
+
+        // Look for any large text blocks
+        document.querySelectorAll('div, p, article').forEach(el => {
+            const text = el.innerText;
+            if (text && text.length > 100) {
+                // Skip if it contains the textarea
+                if (!el.querySelector('textarea')) {
+                    candidates.push({
+                        text: text.trim(),
+                        length: text.length,
+                        element: el
+                    });
+                }
+            }
+        });
+
+        // Get the longest one (likely the assistant's message)
+        if (candidates.length === 0) return "";
+
+        candidates.sort((a, b) => b.length - a.length);
+        return candidates[0].text;
+    }
+
+    // Main capture loop
+    function checkForMessages() {
+        const currentTextarea = getTextareaContent();
+
+        // DETECT USER MESSAGE SUBMISSION
+        // If textarea HAD content but is now empty = message was sent
+        if (previousTextareaContent.length > 10 && currentTextarea.length === 0) {
+            console.log("[ClaudeCapture-v3] 🎯 Detected message submission!");
+
+            if (previousTextareaContent !== lastSentUserMsg) {
+                lastSentUserMsg = previousTextareaContent;
+                sendMessage("user", previousTextareaContent);
+            }
+        }
+
+        previousTextareaContent = currentTextarea;
+
+        // CAPTURE ASSISTANT MESSAGES
+        const assistantMsg = getAssistantMessage();
+        if (assistantMsg.length > 100 && assistantMsg !== lastSentAssistantMsg) {
+            lastSentAssistantMsg = assistantMsg;
+            sendMessage("assistant", assistantMsg);
+        }
+    }
+
+    // Start monitoring
+    function start() {
+        console.log("═══════════════════════════════════════");
+        console.log("[ClaudeCapture-v3] 🚀 VERSION 3.0 STARTING");
+        console.log("[ClaudeCapture-v3] Flask: " + FLASK_URL);
+        console.log("[ClaudeCapture-v3] Enabled: " + isEnabled);
+        console.log("═══════════════════════════════════════");
+
+        // Create UI
+        setTimeout(createUI, 1000);
+
+        // Start heartbeat
+        checkConnection();
+        setInterval(checkConnection, PING_INTERVAL);
+
+        // Monitor for messages every 500ms
+        setInterval(checkForMessages, 500);
+
+        console.log("[ClaudeCapture-v3] ✓ Monitoring started");
+
+        // Expose debug functions
+        window.claudeCapture = {
+            status: () => {
+                console.log({
+                    version: "3.0",
+                    enabled: isEnabled,
+                    connected: isConnected,
+                    lastUser: lastSentUserMsg.substring(0, 60),
+                    lastAssistant: lastSentAssistantMsg.substring(0, 60),
+                    currentTextarea: getTextareaContent().substring(0, 60)
+                });
+            },
+            test: () => sendMessage("user", "Manual test from v3"),
+            getTextarea: getTextareaContent,
+            getAssistant: getAssistantMessage
+        };
+    }
+
+    // Initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        start();
+    }
+})();
