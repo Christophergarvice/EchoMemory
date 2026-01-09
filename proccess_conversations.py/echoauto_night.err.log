@@ -1,0 +1,195 @@
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 154, in <module>
+    main()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 145, in main
+    orchestrate()
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 73, in orchestrate
+    run([python_exec(), str(S_SUMMARIZE)], check=True)
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/memory_sync.py", line 47, in run
+    raise RuntimeError(f"Command failed ({p.returncode}): {argv}\n{p.stderr}")
+RuntimeError: Command failed (1): ['/Users/christhomas/PycharmProjects/EchoAuto_Memory/.venv/bin/python', '/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py']
+Traceback (most recent call last):
+  File "/Users/christhomas/PycharmProjects/EchoAuto_Memory/automation_program/summarize_today.py", line 11, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+
