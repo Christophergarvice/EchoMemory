@@ -1,7 +1,3 @@
-cd /Users/christhomas/PycharmProjects/EchoMemory
-
-cat > process_conversations.py << 'EOF'
-#!/usr/bin/env python3
 import json
 import argparse
 from pathlib import Path
@@ -41,4 +37,3 @@ proc.parse()
 proc.write()
 EOF
 
-ls -lh process_conversations.py
